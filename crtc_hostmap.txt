@@ -1,0 +1,345 @@
+# vim: set ft=tcl:
+
+#hostmap info {{{1}}}
+##########################################################
+#this file defines the mapping between a "session" name and an IP or FQDN name
+#a session name: is used when calling crtc. etc:
+#
+#       crtc nypjar2@attlab
+#       crtc seahawks@jtac
+#
+#in the above two example, the session name is "nypjar2" and "seahawks"
+#repectively.
+#
+#internally, crtc need to convert the session name into an IP, or , a FQDN name
+#that can be resolved into an IP, which can then be used to start a tcp
+#connection.
+#
+#e.g.: if belwo mapping was defined:
+#
+#       array set hostmap {\
+#           NDC2BSVC2SDG01      107.250.202.36 \
+#       }
+#
+#then a crtc session can be started like this:
+#
+#       crtc NDC2BSVC2SDG01@attlab
+#       crtc pe50@attlab
+# 
+
+#sdg att lab {{{2}}}
+array set hostmap {\
+    NDC2BSVC2SDG01      107.250.202.36 \
+    NDC2BSVC2SDG02      107.250.202.37 \
+    NDC2BSVC3SDG01      107.250.206.41 \
+    NDC2BSVC3SDG02      107.250.206.42 \
+    NDC2BSVC4SDG01      107.250.206.46 \
+    NDC2BSVC4SDG02      107.250.206.50 \
+    NDC2CSVC1SDG01      107.250.230.41 \
+    NDC2CSVC1SDG02      107.250.230.42 \
+    NDC2CSVC2SDG01      107.250.228.206 \
+    NDC2CSVC2SDG02      107.250.228.209 \
+    NDC2CSVC3SDG01      107.250.230.103 \
+    NDC2CSVC3SDG02      107.250.230.104 \
+    NDC2CSVC4SDG01      107.250.231.41 \
+    NDC2CSVC4SDG02      107.250.231.42 \
+    NDC2CSVC5SDG01      107.250.231.103 \
+    NDC2CSVC5SDG02      107.250.231.104 \
+}
+
+array set hostmap {\
+    sat-1-con b6tsb25:7033 \
+    sat-2-con b6tsb25:7032 \
+    sat-3-con b6tsb25:7020 \
+}
+
+array set hostmap {             \
+    csim_qfx_tor1  10.13.80.58          \
+    csim_qfx_tor2  10.13.80.59          \
+    csim_qfx_tor3  10.13.80.60          \
+    csim_mx_ipe3   10.13.81.130                 \
+    csim_mx_ipe4   10.13.81.133                 \
+    csim_contrail_compute1 10.13.80.74          \
+    csim_contrail_compute2 10.13.80.75          \
+    csim_contrail_compute3 10.13.80.76          \
+}
+
+#attlab hypervisors {{{2}}}
+#
+#From: "ANNAMALAI, RAMESH" <ra3476@att.com>
+#Date: Tuesday, May 24, 2016 at 3:18 PM
+#Subject: AVPN vPE List with FXP0 & Hypervisor IPs
+# 
+#Ramesh Annamalai
+#AT&T Services
+
+set hostmap(dt404jvpe.hv)             mtjnjrsv127     ;#(NFV4) fxp0:10.40.128.100  lo0:10.40.188.11 HV:10.40.128.241
+set hostmap(dt401jvpe.hv)             mtjnjrsv128     ;#(NFV3) fxp0:10.40.128.102  lo0:10.40.188.14 HV:10.40.128.242
+set hostmap(dt408jvpe.hv)             mtjnjrsv129     ;#(NFV5) fxp0:10.40.128.98   lo0:10.40.188.12 HV:10.40.128.243
+
+#vMIS
+set hostmap(dtrmi411me6.hv)           mtjnjrsv141     ;# HV:10.40.128.248 (fxp0:10.40.128.108) (Gen9) lo0:10.40.188.16
+set hostmap(dtrmi412me6.hv)           mtjnjrsv142     ;# HV:10.40.128.249 (fxp0:10.40.128.110) (Gen9) lo0:10.40.188.17
+set hostmap(dtrmi413me6.hv)           mtjnjrsv143     ;# HV:10.40.128.250 (fxp0:10.40.128.112) (Gen9) lo0:10.40.188.18
+
+#MOW:
+set hostmap(gblond2001me6.hv)         mtunjrsv112 ;#FXP0:10.64.193.67  Hypervisor:10.64.192.82, owner: Sudha
+set hostmap(gblond2002me6.hv)         mtunjrsv113 ;#FXP0:10.64.193.68  Hypervisor:10.64.192.83, owner: Sal
+set hostmap(frpari2001me6.hv)         mtunjrsv114 ;#FXP0:10.64.193.69  Hypervisor:10.64.192.84, owner: Ramesh 
+set hostmap(frpari2002me6.hv)         mtunjrsv115 ;#FXP0:10.64.193.70  Hypervisor:10.64.192.85, owner: Priya
+set hostmap(defrnk4001me6.hv)         mtunjrsv117 ;#FXP0:10.64.193.71  Hypervisor:10.64.193.71, owner: LingYu
+set hostmap(defrnk4002me6.hv)         mtunjrsv118 ;#FXP0:10.64.193.72  Hypervisor:10.64.192.88, owner: Rakesh 
+set hostmap(gblond2005me6.hv)         mtwnjrsv125 ;#FXP0:10.64.194.138 Hypervisor:10.64.194.95, owner: Manoj 
+
+#US:
+set hostmap(attga301me6.hv)           mtrnjrsv117 ;#FXP0:10.40.143.199 Hypervisor:10.40.143.87, owner: Steve
+set hostmap(attga302me6.hv)           mtrnjrsv118 ;#FXP0:10.40.143.200 Hypervisor:10.40.143.88, owner: Prasanth K
+set hostmap(chgil301me6.hv)           mtrnjrsv119 ;#FXP0:10.40.143.201 Hypervisor:10.40.143.89, owner: Raghu 
+set hostmap(chgil302me6.hv)           mtrnjrsv120 ;#FXP0:10.40.143.202 Hypervisor:10.40.143.90, owner: Gayatri
+set hostmap(phnaz401me6.hv)           mtrnjrsv121 ;#FXP0:10.40.143.203 Hypervisor:10.40.143.91, owner: LingYu
+set hostmap(phnaz402me6.hv)           mtrnjrsv122 ;#FXP0:10.40.143.204 Hypervisor:10.40.143.92, owner: LingYu
+
+#att ipag {{{2}}}
+array set hostmap {\
+     pe5        192.168.43.14\
+     pe6        192.168.43.17\
+     pe3        192.168.43.8\
+     pe1        192.168.112.101\
+     pe8        192.168.112.8\
+     pe9        192.168.112.9\
+     pe10       192.168.112.10\
+     pe11       192.168.112.11\
+     pe12       192.168.112.12\
+     pe13       192.168.112.13\
+     pe14       192.168.112.14\
+     pe15       192.168.112.15\
+     pe16       192.168.112.16\
+     pe17       192.168.112.17\
+     pe24       192.168.112.24\
+     pe26       192.168.112.26\
+     PE26       192.168.112.26\
+     pe28       192.168.112.28\
+     pe32       192.168.119.32\
+     pe35       192.168.112.35\
+     pe37       192.168.112.37\
+     pe40       192.168.119.40\
+     pe41       192.168.112.41\
+     pe42       192.168.112.42\
+     pe43       192.168.112.43\
+     pe44       192.168.112.44\
+     pe50       192.168.112.40\
+     pe51       192.168.112.51\
+     pe52       192.168.112.52\
+     pe53       192.168.112.53\
+     pe54       192.168.112.54\
+     hub1       10.144.0.126\
+     hub2       10.144.0.127\
+    bgtmo303nmk-ipv6-primary 10.144.0.221\
+    bgtmo304nmk-ipv6-backup 10.144.0.199\
+    CHEASTRR1 10.144.0.58\
+    CHEASTRR2 10.144.0.57\
+}
+
+#attlab console {{{2}}}
+
+#method1: 
+#* just use original login command , then 
+#* use "$host" in the login_info
+#this is a simple and direct map: "session" -> "host"
+array set hostmap {\
+    pe35-re0-con "TELNET 135.16.102.173 7039" \
+    pe35-re1-con "TELNET 135.16.102.173 7038" \
+    pe50-re0-con "TELNET 135.60.203.110 6004" \
+    pe50-re1-con "TELNET 135.60.203.110 6005" \
+}
+
+#method2:
+#* use IP:port format, then
+#* use "login_string" in login_info, 
+#this looks more flexible, but it rely on the parsing code to be generated -
+#you can put more variables and other data in parsing code, 
+#array set hostmap {\
+#    pe35-re0-con {135.16.102.173:7039} \
+#    pe35-re1-con {135.16.102.173:7038} \
+#}
+
+
+#att d2ipe {{{2}}}
+#
+array set hostmap {\
+    d2ipe2      192.168.106.1\
+    rwcwa373ve2 10.144.0.103\
+}
+
+array set hostmap {\
+     mttnj      135.182.137.225\
+}
+
+
+#jtac lab{{{2}}}
+array set hostmap {\
+    vmx1             10.85.4.17      \
+    vmx2             10.85.4.32      \
+    vmx1-vre         10.85.4.102     \
+    vmx1-vpfe        10.85.4.103     \
+    vmx2-vre         10.85.4.33      \
+    vmx2-vpfe        10.84.5.133     \
+    e320-svl         172.19.165.56  \
+    scooby           192.168.46.146\
+}
+#jtac lab console {{{2}}}
+#juniper jtac lab: map session name to console info
+array set hostmap {\
+    prefix-re0-con	 b6tsa05:7029	\
+    ravens-re0-con	 b6tsa05:7030	\
+    nemesis-re0-con	 b6tsa05:7031	\
+    nemesis-re1-con	 b6tsa05:7033	\
+    bajie-re0-con 	 b6tsa05:7034	\
+    bajie-re1-con 	 b6tsa05:7035	\
+    pontos-re0-con	 b6tsa05:7036	\
+    pontos-re1-con	 b6tsa05:7037	\
+    ares-re0-con	 b6tsa05:7038	\
+    lakers-re0-con	 b6tsa05:7039	\
+    lakers-re1-con	 b6tsa05:7040	\
+    dolphins-re0-con	  b6tsa05:7041	\
+    dolphins-re1-con	  b6tsa05:7042	\
+    donald-re0-con 	 b6tsa05:7043	\
+    donald-re1-con 	 b6tsa05:7044	\
+    mix-re0-con		  b6tsa05:7046	\
+    thunder-re1-con	 b6tsa15:7024	\
+    thunder-re0-con	 b6tsa15:7023	\
+    redskins-re1-con	  b6tsa15:7022	\
+    redskins-re0-con	  b6tsa15:7021	\
+    tianjin-re1-con	 b6tsa15:7020	\
+    tianjin-re0-con	 b6tsa15:7019	\
+    jaguars-re0-con	 b6tsa05:7045	\
+    panthers-re0-con	  b6tsa17:7024	\
+    mickey-re0-con   	  b6tsa17:7010	\
+    mickey-re1-con   	  b6tsa17:7011	\
+    rams-re0-con	 b6tsa26:7023	\
+    bills-re0-con	 b6tsa26:7024	\
+    bears-re0-con	 b6tsb09:7013	\
+    chargers-re0-con	  b6tsb09:7014	\
+    sphinx-re0-con	 b6tsb09:7015	\
+    patriots-re0-con	  b6tsb09:7016	\
+    bulls-re0-con	 b6tsb09:7017	\
+    nyx-re0-con  	 b6tsb09:7018	\
+    nyx-re1-con  	 b6tsb09:7019	\
+    atlantix-re0-con 	  b6tsb09:7020	\
+    atlantix-re1-con 	  b6tsb09:7021	\
+    8111-con 		  b6tsb17:7002	\
+    8112-con		  b6tsb17:7003	\
+    a1500-re0-con         b6tsb17:7004    \
+    suns-re0-con	 b6tsb17:7001	\
+    rio-re0-con 	 b6tsb17:7005	\
+    rio-re1-con 	 b6tsb17:7006	\
+    maya-re0-con   	 b6tsb17:7007	\
+    maya-re1-con   	 b6tsb17:7008	\
+    steelers-re0-con	  b6tsb17:7009	\
+    willi-re0-con 	 b6tsb25:7002	\
+    willi-re1-con  	 b6tsb25:7003	\
+    flip-re0-con  	 b6tsb17:7012	\
+    flip-re1-con  	 b6tsb17:7013	\
+    chiefs-re0-con	 b6tsb17:7014	\
+    eros-re0-con	 b6tsb17:7015	\
+    eros-re1-con	 b6tsb17:7016	\
+    alecto-re0-con	 b6tsb17:7021	\
+    alecto-re1-con	 b6tsb17:7022	\
+    havlar-re0-con	 b6tsb17:7034	\
+    pacifix-re0-con 	  b6tsb17:7035	\
+    pacifix-re1-con 	  b6tsb17:7036	\
+    antalya-re0-con  	  b6tsb17:7046	\
+    antalya-re1-con  	  b6tsb17:7047	\
+    pheonix-re0-con	 b6tsb09:7015	\
+    saints-re0-con	 b6tsb17:7045	\
+    raiders-re0-con	 b6tsb17:7044	\
+    kratos-re1-con 	 b6tsb17:7043	\
+    kratos-re0-con 	 b6tsb17:7042	\
+    obelix-re0-con	 b6tsb17:7041	\
+    obelix-re0-con	 b6tsb17:7040	\
+    archer-re1-con	 b6tsb17:7039	\
+    archer-re0-con	 b6tsb17:7038	\
+    rome-re0-con 	  b6tsb23:7031	\
+    x2020-re0-con 	 b6tsb23:7032	\
+    clippers-re0-con	  b6tsb17:7017	\
+    clippers-re1-con	  b6tsb17:7018	\
+    sonics-re0-con	 b6tsb25:7024	\
+    sonics-re1-con	 b6tsb25:7025	\
+    asterix-re0-con 	  b6tsb23:7023	\
+    asterix-re1-con 	  b6tsb23:7024	\
+    timex-re0-con   	  b6tsb23:7025	\
+    timex-re1-con	  b6tsb23:7026	\
+    hornets-re0-con	 b6tsb23:7007	\
+    hornets-re1-con	 b6tsb23:7008	\
+    nereus-re0-con 	 b6tsb23:7005	\
+    nereus-re1-con 	 b6tsb23:7006	\
+    styx-re0-con 	 b6tsb23:7009	\
+    styx-re1-con 	 b6tsb23:7010	\
+    rhodes-re0-con	 b6tsb23:7012	\
+    texans-re0-con	 b6tsb23:7013	\
+    pluto-re0-con 	 b6tsb23:7001	\
+    pluto-re1-con 	 b6tsb23:7002	\
+    hermes-re0-con 	 b6tsb23:7018	\
+    hermes-re1-con 	 b6tsb23:7019	\
+    idefix-re0-con 	 b6tsb25:7004	\
+    idefix-re1-con 	 b6tsb25:7005	\
+    alcoholix-re0-con	  b6tsb25:7006	\
+    alcoholix-re1-con	  b6tsb25:7007	\
+    photogenix-re0-con 	  b6tsb25:7008	\
+    photogenix-re1-con 	  b6tsb25:7009	\
+    dogmatix-re0-con  	  b6tsb25:7010	\
+    dogmatix-re1-con  	  b6tsb25:7011	\
+    automatix-re0-con  	  b6tsb25:7016	\
+    automatix-re1-con  	  b6tsb25:7017	\
+    dynamix-re0-con	 b6tsb23:7020	\
+    gilby-re0-con	 b6tsb17:7024	\
+    mustang-re0-con	 b6tsb17:7019	\
+    camaro-re0-con	 b6tsb17:7020	\
+    getafix-re0-con 	  b6tsb25:7012	\
+    getafix-re1-con 	  b6tsb25:7013	\
+    botanix-re0-con 	  b6tsb25:7014	\
+    botanix-re1-con 	  b6tsb25:7015	\
+    paris-re0-con	 b6tsb17:7010	\
+    paris-re1-con	 b6tsb17:7011	\
+    knicks-re0-con	 b6tsb25:7034	\
+    knicks-re1-con	 b6tsb25:7035	\
+    seahawks-re0-con	  b6tsb25:7036	\
+    seahawks-re1-con	  b6tsb25:7037	\
+    matrix-re0-con	 b6tsb25:7038	\
+    matrix-re1-con	 b6tsb25:7039	\
+    cacophonix-re0-con	  b6tsb25:7040	\
+    cacophonix-re1-con	  b6tsb25:7041	\
+    tjure-re0-con	 b6tsb25:7033	\
+    mavericks-re0-con	  b6tsb25:7032	\
+    colts-re0-con	 b6tsb25:7031	\
+    snorre-re0-con	 b6tsb25:7030	\
+    mini-re0-con	 b6tsb23:7021	\
+    mini-re1-con	 b6tsb23:7022	\
+    wickie-re0-con	 b6tsd25:7028	\
+    tintin-re0-con 	 b6tse25:7042	\
+    tintin-re1-con 	 b6tse25:7043	\
+    wukong-re0-con 	 b6tse25:7044	\
+    wukong-re1-con 	 b6tse25:7045	\
+    kurt-re0-con 	 b6tse23:7035	\
+    kurt-re1-con 	 b6tse23:7036	\
+    rockets-re0-con	 b6tse23:7023	\
+    rockets-re1-con	 b6tse23:7024	\
+    earth-re0-con	 b6tse25:7011	\
+    earth-re1-con	 b6tse25:7012	\
+    deadalus-re0-con b6tse25:7009	\
+    deadalus-re1-con b6tse25:7010	\
+    holland-re0-con	 b6tsb25:7026	\
+    holland-re1-con	 b6tsb25:7027	\
+    greece-re0-con	 b6tsb25:7018	\
+    greece-re1-con	 b6tsb25:7019	\
+    turkey-re0-con	 b6tsb25:7028	\
+    egypt-re0-con	 b6tsb25:7029	\
+}
+
+array set hostmap {\
+    punter-con b6tsb03.ultralab.juniper.net:7007 \
+    greenbay-con b6tsb03.ultralab.juniper.net:7008 \
+    brady-con b6tsb03.ultralab.juniper.net:7042 \
+    maning-con b6tsb03.ultralab.juniper.net:7043 \
+}
+
